@@ -1,7 +1,3 @@
-## Hello
-function encrypt($username, $password)
-{
-  $password = sha1(strtoupper($username) . ":" . strtoupper($password));
-    $password = strtoupper($password);
-      return $password;
-}
+## WoWAllhaze Public Server
+
+[![Build Status](https://travis-ci.org/allhaze/Azeroth.svg?branch=3.3.5)](https://travis-ci.org/allhaze/Azeroth)
