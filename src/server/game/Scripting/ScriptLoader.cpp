@@ -1404,12 +1404,13 @@ void AddOutdoorPvPScripts()
 void AddBattlegroundScripts()
 {
 #ifdef SCRIPTS
+
 #endif
 }
 
 #ifdef SCRIPTS
 /* This is where custom scripts' loading functions should be declared. */
-
+void AddSC_npc_1v1arena();
 void AddSC_REFORGER_NPC();
 void AddSC_PWS_Transmogrification();
 void AddSC_CS_Transmogrification();
@@ -1420,6 +1421,7 @@ void AddCustomScripts()
 #ifdef SCRIPTS
     /* This is where custom scripts should be added. */
 
+    AddSC_npc_1v1arena();
     AddSC_REFORGER_NPC();
     AddSC_PWS_Transmogrification();
     AddSC_CS_Transmogrification();
