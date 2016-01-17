@@ -32,7 +32,7 @@ char const* GitRevision::GetFullDatabase()
     return _FULL_DATABASE;
 }
 
-#define _PACKAGENAME "TrinityCore"
+#define _PACKAGENAME "AllhazeCore"
 
 char const* GitRevision::GetFullVersion()
 {
