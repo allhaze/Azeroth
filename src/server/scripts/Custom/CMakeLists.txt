@@ -13,6 +13,7 @@
 set(scripts_STAT_SRCS
   ${scripts_STAT_SRCS}
 #  ${sources_Custom}
+    Custom/cs_premium.cpp
     Custom/LearnSpells.cpp
     Custom/npc_arena1v1.cpp
     Custom/npc_arena1v1.h

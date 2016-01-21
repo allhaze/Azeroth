@@ -23,6 +23,7 @@
 #include "SharedDefines.h"
 #include "ScriptMgr.h"
 #include "Player.h"
+#include "WorldSession.h"
 
 namespace Trinity
 {
@@ -185,6 +186,11 @@ namespace Trinity
                 }
 
                 xpMod *= isBattleGround ? sWorld->getRate(RATE_XP_BG_KILL) : sWorld->getRate(RATE_XP_KILL);
+
+                if(player->GetSession()->IsPremium()) {
+                    xpMod *= sWorld->getRate(RATE_XP_KILL_PREMIUM);
+                }
+
                 gain = uint32(gain * xpMod);
             }
 

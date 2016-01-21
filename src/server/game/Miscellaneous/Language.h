@@ -114,7 +114,6 @@ enum TrinityStrings
     LANG_PVPSTATS_DISABLED              = 81,
     // Free 82 - 95
 
-
     LANG_GUILD_RENAME_ALREADY_EXISTS    = 96,
     LANG_GUILD_RENAME_DONE              = 97,
     LANG_RENAME_PLAYER_ALREADY_EXISTS   = 98,
@@ -1208,6 +1207,7 @@ enum TrinityStrings
     LANG_CREATURE_NO_INTERIOR_POINT_FOUND         = 11011,
     LANG_CREATURE_MOVEMENT_NOT_BOUNDED            = 11012,
     LANG_CREATURE_MOVEMENT_MAYBE_UNBOUNDED        = 11013,
-    LANG_INSTANCE_BIND_MISMATCH                   = 11014
+    LANG_INSTANCE_BIND_MISMATCH                   = 11014,
+    LANG_PREMIUM_CANT_DO                          = 12009,
 };
 #endif
