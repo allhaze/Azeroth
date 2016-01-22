@@ -1,10 +1,3 @@
-/*
- *
- * Copyright (C) 2013 Emu-Devstore <http://emu-devstore.com/>
- * Written by Teiby <http://www.teiby.de/>
- *
- */
-
 #include "ScriptMgr.h"
 #include "ArenaTeamMgr.h"
 #include "Common.h"
@@ -18,40 +11,45 @@
 
 class npc_1v1arena : public CreatureScript
 {
+
 public:
     npc_1v1arena() : CreatureScript("npc_1v1arena")
     {
-    }
 
+    }
 
     bool JoinQueueArena(Player* player, Creature* me, bool isRated)
     {
-        if(!player || !me)
+        if(!player || !me) {
             return false;
+        }
 
-        if(sWorld->getIntConfig(CONFIG_ARENA_1V1_MIN_LEVEL) > player->getLevel())
+        if(sWorld->getIntConfig(CONFIG_ARENA_1V1_MIN_LEVEL) > player->getLevel()) {
             return false;
+        }
+
 
         ObjectGuid guid = player->GetGUID();
+
         uint8 arenaslot = ArenaTeam::GetSlotByType(ARENA_TEAM_5v5);
         uint8 arenatype = ARENA_TYPE_5v5;
         uint32 arenaRating = 0;
         uint32 matchmakerRating = 0;
 
         // ignore if we already in BG or BG queue
-        if (player->InBattleground())
+        if (player->InBattleground()) {
             return false;
+        }
 
         //check existance
         Battleground* bg = sBattlegroundMgr->GetBattlegroundTemplate(BATTLEGROUND_AA);
-        if (!bg)
-        {
+
+        if (!bg) {
             TC_LOG_ERROR("Arena", "Battleground: template bg (all arenas) not found");
             return false;
         }
 
-        if (DisableMgr::IsDisabledFor(DISABLE_TYPE_BATTLEGROUND, BATTLEGROUND_AA, NULL))
-        {
+        if (DisableMgr::IsDisabledFor(DISABLE_TYPE_BATTLEGROUND, BATTLEGROUND_AA, NULL)) {
             ChatHandler(player->GetSession()).PSendSysMessage(LANG_ARENA_DISABLED);
             return false;
         }
@@ -59,18 +57,21 @@ public:
         BattlegroundTypeId bgTypeId = bg->GetTypeID();
         BattlegroundQueueTypeId bgQueueTypeId = BattlegroundMgr::BGQueueTypeId(bgTypeId, arenatype);
         PvPDifficultyEntry const* bracketEntry = GetBattlegroundBracketByLevel(bg->GetMapId(), player->getLevel());
-        if (!bracketEntry)
-            return false;
 
-        GroupJoinBattlegroundResult err = ERR_GROUP_JOIN_BATTLEGROUND_FAIL;
+        if (!bracketEntry) {
+            return false;
+        }
 
         // check if already in queue
-        if (player->GetBattlegroundQueueIndex(bgQueueTypeId) < PLAYER_MAX_BATTLEGROUND_QUEUES)
+        if (player->GetBattlegroundQueueIndex(bgQueueTypeId) < PLAYER_MAX_BATTLEGROUND_QUEUES) {
             //player is already in this queue
             return false;
+        }
+
         // check if has free queue slots
-        if (!player->HasFreeBattlegroundQueueId())
+        if (!player->HasFreeBattlegroundQueueId()) {
             return false;
+        }
 
         uint32 ateamId = 0;
 
