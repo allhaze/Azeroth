@@ -29,7 +29,7 @@ public:
         }
 
 
-        ObjectGuid guid = player->GetGUID();
+//        ObjectGuid guid = player->GetGUID();
 
         uint8 arenaslot = ArenaTeam::GetSlotByType(ARENA_TEAM_5v5);
         uint8 arenatype = ARENA_TYPE_5v5;
